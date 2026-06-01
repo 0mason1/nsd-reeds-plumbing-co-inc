@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reeds Plumbing Co Inc | Charlotte, NC Plumbing Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0d1b2a;
+    --blue: #1a6b9a;
+    --light-blue: #2a8fc7;
+    --gold: #c8922a;
+    --off-white: #f7f5f0;
+    --text-dark: #1a1a1a;
+    --text-muted: #666;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text-dark);
+    background: #fff;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+  }
+
+  /* PREVIEW BANNER */
+  .preview-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10000;
+    background: #111;
+    color: #fff;
+    text-align: center;
+    font-size: 0.78rem;
+    font-family: 'DM Sans', sans-serif;
+    padding: 7px 1rem;
+    letter-spacing: 0.03em;
+  }
+  .preview-banner a {
+    color: #c8922a;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 32px;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    padding: 1.2rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.4s ease;
+  }
+  nav.scrolled {
+    background: rgba(13, 27, 42, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    padding: 0.85rem 2rem;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    line-height: 1.2;
+  }
+  .nav-logo span {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: #fff; }
+  .nav-phone {
+    color: #fff !important;
+    font-weight: 600 !important;
+  }
+  .nav-cta {
+    background: var(--gold);
+    color: #fff !important;
+    padding: 0.55rem 1.2rem;
+    border-radius: 4px;
+    font-weight: 600 !important;
+    letter-spacing: 0.06em;
+    font-size: 0.82rem !important;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: #b07e1f; }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 680px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    text-align: center;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: -10%;
+    background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1800&auto=format&fit=crop&q=80');
+    background-size: cover;
+    background-position: center;
+    animation: heroZoom 18s ease-in-out infinite alternate;
+    filter: brightness(0.4);
+  }
+  @keyframes heroZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.12); }
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(13,27,42,0.5) 0%, rgba(13,27,42,0.75) 100%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 820px;
+    padding: 0 1.5rem;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(200, 146, 42, 0.2);
+    border: 1px solid rgba(200, 146, 42, 0.5);
+    color: #e8b55a;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.45rem 1.2rem;
+    border-radius: 30px;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.08;
+    margin-bottom: 1.3rem;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: #e8b55a;
+  }
+  .hero p {
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.82);
+    max-width: 580px;
+    margin: 0 auto 2.2rem;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: #fff;
+    border: none;
+    padding: 1rem 2.2rem;
+    border-radius: 5px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .btn-primary:hover { background: #b07e1f; transform: translateY(-2px); }
+  .btn-secondary {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255,255,255,0.5);
+    padding: 1rem 2.2rem;
+    border-radius: 5px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s;
+    font-family: 'DM Sans', sans-serif;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.12); border-color: #fff; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--navy);
+    padding: 2.8rem 2rem;
+  }
+  .trust-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    text-align: center;
+  }
+  .trust-item {
+    padding: 1.5rem;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  .trust-item:last-child { border-right: none; }
+  .trust-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .trust-label {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* SERVICES */
+  .services {
+    background: var(--off-white);
+    padding: 6rem 2rem;
+  }
+  .section-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 3.5rem;
+  }
+  .section-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+  .section-header h2 {
+    font-size: clamp(2rem, 4vw, 2.9rem);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .section-header p {
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-size: 1rem;
+  }
+  .services-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .service-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 2.2rem;
+    box-shadow: 0 2px 18px rgba(0,0,0,0.06);
+    transition: transform 0.25s, box-shadow 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--gold));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.1); }
+  .service-icon {
+    font-size: 2.2rem;
+    margin-bottom: 1.1rem;
+    display: block;
+  }
+  .service-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.7rem;
+  }
+  .service-card p {
+    color: var(--text-muted);
+    font-size: 0.93rem;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+  }
+  .service-link {
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--blue);
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    padding: 0;
+    transition: color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .service-link:hover { color: var(--navy); }
+
+  /* ABOUT */
+  .about {
+    background: #fff;
+    padding: 6rem 2rem;
+  }
+  .about-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .about-image-wrap {
+    position: relative;
+  }
+  .about-image-wrap img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+  }
+  .about-badge {
+    position: absolute;
+    bottom: -1.5rem;
+    right: -1.5rem;
+    background: var(--navy);
+    color: #fff;
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    min-width: 140px;
+  }
+  .about-badge strong {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+  }
+  .about-badge span {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .about-text .section-tag { display: block; margin-bottom: 0.8rem; }
+  .about-text h2 {
+    font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 1.3rem;
+  }
+  .about-text p {
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 1.1rem;
+    font-size: 0.97rem;
+  }
+  .about-list {
+    list-style: none;
+    margin: 1.5rem 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+  .about-list li {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .about-list li::before {
+    content: '✓';
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  /* REVIEWS */
+  .reviews {
+    background: var(--navy);
+    padding: 6rem 2rem;
+  }
+  .reviews .section-header h2 { color: #fff; }
+  .reviews .section-header p { color: rgba(255,255,255,0.55); }
+  .reviews-note {
+    text-align: center;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.8rem;
+    margin-top: -2rem;
+    margin-bottom: 3rem;
+    font-style: italic;
+  }
+  .reviews-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .review-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 2rem;
+    transition: background 0.25s;
+  }
+  .review-card:hover { background: rgba(255,255,255,0.1); }
+  .stars {
+    color: #f5c518;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+  }
+  .review-text {
+    color: rgba(255,255,255,0.82);
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin-bottom: 1.4rem;
+    font-style: italic;
+  }
+  .review-author {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .review-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue), var(--gold));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #fff;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+  }
+  .review-name {
+    font-weight: 600;
+    color: #fff;
+    font-size: 0.9rem;
+  }
+  .review-location {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.45);
+  }
+
+  /* FOOTER */
+  footer {
+    background: #080f18;
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+  .footer-tagline {
+    color: rgba(255,255,255,0.4);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .footer-phone a {
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+  .footer-phone a:hover { color: #e8b55a; }
+  .footer-city {
+    color: rgba(255,255,255,0.4);
+    font-size: 0.82rem;
+    margin-top: 0.4rem;
+  }
+  .footer-bottom {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.25);
+    font-size: 0.75rem;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .about-badge { right: 1rem; bottom: 1rem; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 640px) {
+    .trust-inner { grid-template-columns: 1fr; }
+    .trust-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 1.2rem; }
+    .trust-item:last-child { border-bottom: none; }
+    .services-grid { grid-template-columns: 1fr; }
+    .about-list { grid-template-columns: 1fr; }
+    .hero-buttons { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Preview Banner -->
+<div class="preview-banner">
+  ✨ Free preview by North Star Digital — <a href="https://northstardigital.digital" target="_blank">northstardigital.digital</a>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    Reeds Plumbing Co Inc
+    <span>Charlotte, NC · Licensed & Insured</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="tel:(704) 399-7785" class="nav-phone">(704) 399-7785</a></li>
+    <li><button class="nav-cta" onclick="openQuote()">Get Free Quote</button></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Charlotte's Trusted Plumbing Experts</div>
+    <h1>Expert Plumbing,<br><em>Done Right</em> the First Time</h1>
+    <p>From emergency repairs to full re-pipes, Reeds Plumbing Co Inc has been keeping Charlotte homes and businesses flowing for decades. Fast, reliable, and fully licensed.</p>
+    <div class="hero-buttons">
+      <button class="btn-primary" onclick="openQuote()">Get a Free Quote</button>
+      <a href="tel:(704) 399-7785" class="btn-secondary">📞 (704) 399-7785</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<section class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <div class="trust-number">30+</div>
+      <div class="trust-label">Years Serving Charlotte</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-number">12K+</div>
+      <div class="trust-label">Jobs Completed</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-number">99%</div>
+      <div class="trust-label">Customer Satisfaction</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header">
+    <span class="section-tag">What We Do</span>
+    <h2>Comprehensive Plumbing Services</h2>
+    <p>Whether it's a dripping faucet or a full plumbing system overhaul, our licensed technicians handle every job with precision and care.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">🔧</span>
+      <h3>Emergency Plumbing Repairs</h3>
+      <p>Burst pipes, severe leaks, and sudden failures don't wait for business hours. Our team responds fast to protect your home from water damage — day or night.</p>
+      <button class="service-link" onclick="openQuote()">Request Service →</button>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🚿</span>
+      <h3>Drain Cleaning & Unclogging</h3>
+      <p>From slow kitchen drains to fully blocked sewer lines, we use professional-grade equipment to clear clogs quickly and prevent future backups.</p>
+      <button class="service-link" onclick="openQuote()">Request Service →</button>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🌡️</span>
+      <h3>Water Heater Installation</h3>
+      <p>Traditional tank or modern tankless — we install, repair, and replace water heaters from all major brands to ensure your family never runs out of hot water.</p>
+      <button class="service-link" onclick="openQuote()">Request Service →</button>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🏠</span>
+      <h3>Re-Pipe Services</h3>
+      <p>Aging galvanized or polybutylene pipes putting your home at risk? We perform full or partial re-pipes with durable copper or PEX piping built to last.</p>
+      <button class="service-link" onclick="openQuote()">Request Service →</button>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🚽</span>
+      <h3>Fixture Installation & Repair</h3>
+      <p>Toilets, faucets, sinks, showers, and garbage disposals — we install and repair all plumbing fixtures with expert craftsmanship and quality parts.</p>
+      <button class="service-link" onclick="openQuote()">Request Service →</button>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🔍</span>
+      <h3>Leak Detection & Slab Leaks</h3>
+      <p>Hidden leaks can cause serious structural damage. Using advanced detection technology, we locate and fix leaks under slabs and behind walls — minimal disruption guaranteed.</p>
+      <button class="service-link" onclick="openQuote()">Request Service →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-image-wrap">
+      <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=900&auto=format&fit=crop&q=80" alt="Plumber working on pipes">
+      <div class="about-badge">
+        <strong>A+</strong>
+        <span>BBB Rated</span>
+      </div>
+    </div>
+    <div class="about-text">
+      <span class="section-tag">About Us</span>
+      <h2>Charlotte's Most Trusted Plumbing Company</h2>
+      <p>Reeds Plumbing Co Inc has been a cornerstone of the Charlotte plumbing community for over three decades. Founded on the principles of honest work, fair pricing, and genuine care for every customer, we've grown from a small family operation into one of the most recognized names in the region.</p>
+      <p>Every technician on our team is fully licensed, background-checked, and committed to treating your home with the same respect they'd show their own. We show up on time, explain everything clearly, and never surprise you with hidden fees.</p>
+      <ul class="about-list">
+        <li>Licensed & Fully Insured</li>
+        <li>Upfront, Flat-Rate Pricing</li>
+        <li>24/7 Emergency Availability</li>
+        <li>Background-Checked Techs</li>
+        <li>Warranty on All Work</li>
+        <li>Locally Owned & Operated</li>
+      </ul>
+      <button class="btn-primary" onclick="openQuote()">Schedule a Consultation</button>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="section-header">
+    <span class="section-tag" style="color: #e8b55a;">Customer Reviews</span>
+    <h2>What Charlotte Homeowners Are Saying</h2>
+    <p>Real experiences from real customers across the greater Charlotte area.</p>
+  </div>
+  <p class="reviews-note">Real reviews pulled from Google upon site launch.</p>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Reeds Plumbing sent someone out within two hours of my call when I had a pipe burst in my basement. The technician was professional, explained exactly what needed to be done, and had everything fixed before the damage got out of hand. Absolute lifesavers."</p>
+      <div class="review-author">
+        <div class="review-avatar">MH</div>
+        <div>
+          <div class="review-name">Marcus H.</div>
+          <div class="review-location">Charlotte, NC</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"I've used Reeds Plumbing twice now — once for a water heater replacement and once for a slow drain issue. Both times the pricing was fair and transparent, and the work was done cleanly with no mess left behind. They're my go-to plumber in Charlotte for good reason."</p>
+      <div class="review-author">
+        <div class="review-avatar">ST</div>
+        <div>
+          <div class="review-name">Sandra T.</div>
+          <div class="review-location">Ballantyne, NC</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Our kitchen sink had been backing up for weeks and we'd
